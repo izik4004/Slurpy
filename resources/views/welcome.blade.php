@@ -1,115 +1,82 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Slurpydesires</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet"> 
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}}
-        </style>
-
-    </head>
-    <body class="antialiased">
-        <div class="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-            <div class="relative flex items-center justify-between">
-              <a href="/" aria-label="Company" title="Company" class="inline-flex items-center">
-                <svg class="w-8 text-deep-purple-accent-400" viewBox="0 0 24 24" stroke-linejoin="round" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" stroke="currentColor" fill="none">
-                  <rect x="3" y="1" width="7" height="12"></rect>
-                  <rect x="3" y="17" width="7" height="6"></rect>
-                  <rect x="14" y="1" width="7" height="6"></rect>
-                  <rect x="14" y="11" width="7" height="12"></rect>
-                </svg>
-                <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">Slurpy<span class="text-indigo-500">Desires</span></span>
-              </a>
-              <ul class="flex items-center  space-x-8 lg:flex">
-                <li><a href="/" aria-label="Our product" title="Our product" class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Product</a></li>
-                <li><a href="/" aria-label="Our product" title="Our product" class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Features</a></li>
-                <li><a href="/" aria-label="Product pricing" title="Product pricing" class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Pricing</a></li>
-                <li><a href="/" aria-label="About us" title="About us" class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">About us</a></li>
-                <li>
-                  <a
-                    href="/"
-                    class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                    aria-label="Sign up"
-                    title="Sign up"
-                  >
-                    Sign up
-                  </a>
-                </li>
-              </ul>
-              <!-- Mobile menu -->
-              <div class="lg:hidden">
-                <button aria-label="Open Menu" title="Open Menu" class="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50">
-                  <svg class="w-5 text-gray-600" viewBox="0 0 24 24">
-                    <path fill="currentColor" d="M23,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,13,23,13z"></path>
-                    <path fill="currentColor" d="M23,6H1C0.4,6,0,5.6,0,5s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,6,23,6z"></path>
-                    <path fill="currentColor" d="M23,20H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,20,23,20z"></path>
-                  </svg>
-                </button>
-                <!-- Mobile menu dropdown 
-                <div class="absolute top-0 left-0 w-full">
-                  <div class="p-5 bg-white border rounded shadow-sm">
-                    <div class="flex items-center justify-between mb-4">
-                      <div>
-                        <a href="/" aria-label="Company" title="Company" class="inline-flex items-center">
-                          <svg class="w-8 text-deep-purple-accent-400" viewBox="0 0 24 24" stroke-linejoin="round" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" stroke="currentColor" fill="none">
-                            <rect x="3" y="1" width="7" height="12"></rect>
-                            <rect x="3" y="17" width="7" height="6"></rect>
-                            <rect x="14" y="1" width="7" height="6"></rect>
-                            <rect x="14" y="11" width="7" height="12"></rect>
-                          </svg>
-                          <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">Company</span>
-                        </a>
+@extends('layout.app')
+@section('content')
+         
+<div class="w-4/5 mx-auto my-20 bg-white">
+  <div id="slider" class="w-full swiper-container">
+      <div class="swiper-wrapper">
+          <div class="bg-center bg-cover shadow-lg swiper-slide" style="background-image: url('/img/m1.png');">
+              <div class="container px-4 mx-auto py-44 md:px-20">
+                  <div class="w-full md:w-1/2">
+                      <div class="border-gray-100 md:border md:p-10">
+                        <div class="bg-center bg-cover shadow-lg swiper-slide" style="background-image: url('/img/m2.png');"></div>
                       </div>
-                      <div>
-                        <button aria-label="Close Menu" title="Close Menu" class="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                          <svg class="w-5 text-gray-600" viewBox="0 0 24 24">
-                            <path
-                              fill="currentColor"
-                              d="M19.7,4.3c-0.4-0.4-1-0.4-1.4,0L12,10.6L5.7,4.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l6.3,6.3l-6.3,6.3 c-0.4,0.4-0.4,1,0,1.4C4.5,19.9,4.7,20,5,20s0.5-0.1,0.7-0.3l6.3-6.3l6.3,6.3c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3 c0.4-0.4,0.4-1,0-1.4L13.4,12l6.3-6.3C20.1,5.3,20.1,4.7,19.7,4.3z"
-                            ></path>
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                    <nav>
-                      <ul class="space-y-4">
-                        <li><a href="/" aria-label="Our product" title="Our product" class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Product</a></li>
-                        <li><a href="/" aria-label="Our product" title="Our product" class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Features</a></li>
-                        <li><a href="/" aria-label="Product pricing" title="Product pricing" class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Pricing</a></li>
-                        <li><a href="/" aria-label="About us" title="About us" class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">About us</a></li>
-                        <li>
-                          <a
-                            href="/"
-                            class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                            aria-label="Sign up"
-                            title="Sign up"
-                          >
-                            Sign up
-                          </a>
-                        </li>
-                      </ul>
-                    </nav>
+                      
                   </div>
-                </div>
-                -->
               </div>
-            </div>
           </div>
+      </div>
+      <div class="hidden w-16 h-16 text-xs text-pink-500 bg-white rounded-full md:flex swiper-button-prev"></div>
+      <div class="hidden w-16 h-16 text-xs text-pink-500 bg-white rounded-full md:flex swiper-button-next"></div>
+      <div class="swiper-pagination"></div>
+      
+  </div>
 
-
-
-          <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 mt-10 mb-15">
+ 
+  
+    <div 
+      class="relative max-w-6xl mx-auto"
+      x-data="{ activeSlide: 1, slides: [1, 2, 3, 4, 5] }"
+     >
+      <!-- Slides -->
+      <template x-for="slide in slides" :key="slide">
+        <div
+           x-show="activeSlide === slide"
+           class="flex items-center p-24 text-5xl font-bold text-white bg-indigo-500 rounded-lg h-96">
+          <span class="w-12 text-center" x-text="slide"></span>
+          <span class="text-indigo-300">/</span>
+          <span class="w-12 text-center" x-text="slides.length"></span>
+        </div>
+      </template>
+      
+      <!-- Prev/Next Arrows -->
+      <div class="absolute inset-0 flex">
+        <div class="flex items-center justify-start w-1/2">
+          <button 
+            class="w-12 h-12 -ml-6 font-bold text-indigo-500 bg-indigo-100 rounded-full hover:text-orange-500 hover:shadow-lg"
+            x-on:click="activeSlide = activeSlide === 1 ? slides.length : activeSlide - 1">
+            &#8592;
+           </button>
+        </div>
+        <div class="flex items-center justify-end w-1/2">
+          <button 
+            class="w-12 h-12 -mr-6 font-bold text-indigo-500 bg-indigo-100 rounded-full hover:text-orange-500 hover:shadow"
+            x-on:click="activeSlide = activeSlide === slides.length ? 1 : activeSlide + 1">
+            &#8594;
+          </button>
+        </div>        
+      </div>
+  
+      <!-- Buttons -->
+      <div class="absolute flex items-center justify-center w-full px-4">
+        <template x-for="slide in slides" :key="slide">
+          <button
+            class="flex-1 h-2 mx-2 mt-4 mb-0 overflow-hidden transition-colors duration-200 ease-out rounded-full hover:bg-indigo-600 hover:shadow-lg"
+            :class="{ 
+                'bg-orange-600': activeSlide === slide,
+                'bg-indigo-300': activeSlide !== slide 
+            }" 
+            x-on:click="activeSlide = slide"
+          ></button>
+        </template>
+      </div>
+    </div>
+    
+   
+  </div>
+      <div class="px-4 py-16 mx-auto mt-10 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 mb-15">
             <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
               <div>
-                <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
+                <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-indigo-900 uppercase rounded-full bg-indigo-accent-400">
                   Brand new
                 </p>
               </div>
@@ -136,7 +103,7 @@
             
 
             
-            <div class="grid gap-5 row-gap-5 mb-8 lg:grid-cols-3 sm:grid-cols-2 mt-24">
+            <div class="grid gap-5 row-gap-5 mt-24 mb-8 lg:grid-cols-3 sm:grid-cols-2">
               <a href="/" aria-label="View Item" class="inline-block overflow-hidden duration-300 transform bg-white rounded shadow-sm hover:-translate-y-2">
                 <div class="flex flex-col h-full">
                 <div class="max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
@@ -187,14 +154,14 @@
 
 
           <div class="flex items-center justify-center">
-            <button type="button" class="w-24 flex items-center border-l border-t border-b text-base font-medium rounded-l-md text-black bg-white hover:bg-gray-100 px-4 py-2">
+            <button type="button" class="flex items-center w-24 px-4 py-2 text-base font-medium text-black bg-white border-t border-b border-l rounded-l-md hover:bg-gray-100">
                     Featured
             </button>
-            <button type="button" class="w-24 border text-base font-medium rounded-r-md text-black bg-white hover:bg-gray-100 px-4 py-2">
+            <button type="button" class="w-24 px-4 py-2 text-base font-medium text-black bg-white border rounded-r-md hover:bg-gray-100">
                 On-Sale
             </button>
         </div>
-          <div class="grid max-w-screen-lg gap-8 row-gap-5 mb-8 sm:grid-cols-2 lg:grid-cols-3 sm:mx-auto mt-16">
+          <div class="grid max-w-screen-lg gap-8 row-gap-5 mt-16 mb-8 sm:grid-cols-2 lg:grid-cols-3 sm:mx-auto">
             <div class="max-w-xs mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
                 <div class="px-4 py-2">
                     <h1 class="text-3xl font-bold text-gray-800 uppercase dark:text-white">NIKE AIR</h1>
@@ -296,20 +263,11 @@
 
 <!------BLOG SECTION ----->
 
-<div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 mt-8 ">
-    <div class="max-w-xl mb-6 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
-      <div>
-      </div>
+<div class="px-4 py-16 mx-auto mt-8 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 ">
+    <div class="max-w-xl mb-4 md:mx-auto sm:text-center lg:max-w-2xl md:mb-4">
       <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
         <span class="relative inline-block">
-          <svg viewBox="0 0 52 24" fill="currentColor" class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
-            <defs>
-              <pattern id="db164e35-2a0e-4c0f-ab05-f14edc6d4d30" x="0" y="0" width=".135" height=".30">
-                <circle cx="1" cy="1" r=".7"></circle>
-              </pattern>
-            </defs>
-            <rect fill="url(#db164e35-2a0e-4c0f-ab05-f14edc6d4d30)" width="52" height="24"></rect>
-          </svg>
+          
           BLOG SECTION
         </h2>
         </span>
@@ -519,4 +477,27 @@
             </a>
         </div>
     </footer>
-</html>
+<script>
+  var mySwiper = new Swiper ('.swiper-container', {
+          // Optional parameters
+          direction: 'horizontal',
+          loop: true,
+
+          // If we need pagination
+          pagination: {
+              el: '.swiper-pagination',
+          },
+
+          // Navigation arrows
+          navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+          },
+
+          // And if we need scrollbar
+          scrollbar: {
+              el: '.swiper-scrollbar',
+          },
+      })
+</script>
+@endsection
